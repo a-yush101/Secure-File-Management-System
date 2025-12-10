@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>File · Secure File Manager</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="topbar glass">
+    <div class="brand">Secure File Manager</div>
+    <div class="nav-links">
+      <a href="/dashboard.html">Dashboard</a>
+      <a href="#" onclick="logout()">Logout</a>
+      <span class="theme-toggle" onclick="toggleTheme()">🌗</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <a class="back-btn" href="/dashboard.html">← Back to dashboard</a>
+
+    <div class="card glass" style="max-width:1100px;margin:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
+        <div>
+          <h2 id="fname">File name</h2>
+          <div id="fmeta" class="small">Owner • Size • Modified</div>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:center">
+          <button class="btn primary" id="download-btn">Download</button>
+          <button class="btn secondary" onclick="readFile()">Read (Preview)</button>
+          <button class="btn ghost" id="edit-btn" onclick="enableEdit()">Edit</button>
+        </div>
+      </div>
+
+      <div class="meta-grid" style="margin-top:18px;">
+        <!-- left: preview / editor -->
+        <div>
+          <div id="preview-area" class="preview-wrap" style="display:none;">
+            <div class="preview-header">
+              <strong>Preview</strong>
+              <div>
+                <button class="btn ghost" onclick="closePreview()">Close</button>
+              </div>
+            </div>
+            <div id="preview" class="preview-content">Preview content will appear here</div>
+          </div>
+
+          <div id="editor-area" style="display:none;margin-top:12px">
+            <textarea id="editor"></textarea>
+            <div style="margin-top:10px">
+              <button class="btn primary" onclick="saveEdit()">Save</button>
+              <button class="btn secondary" onclick="cancelEdit()">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- right: metadata & threat report -->
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="meta-box">
+            <h3 style="margin-bottom:10px">File Details</h3>
+            <div id="meta-rows">
+              <!-- filled by JS -->
+              <div class="meta-row"><div class="label">Name</div><div id="m-name"></div></div>
+              <div class="meta-row"><div class="label">Owner</div><div id="m-owner"></div></div>
+              <div class="meta-row"><div class="label">Size</div><div id="m-size"></div></div>
+              <div class="meta-row"><div class="label">Uploaded</div><div id="m-uploaded"></div></div>
+              <div class="meta-row"><div class="label">Modified</div><div id="m-modified"></div></div>
+            </div>
+
+            <h4 style="margin-top:12px">Permissions</h4>
+            <table class="table" id="perm-table">
+              <thead><tr><th>User</th><th>Mode</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin:18px 0;">
+
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <input id="share-user" type="text" placeholder="Username to share with" style="max-width:200px">
+        <select id="share-mode"><option value="read">Read</option><option value="write">Write</option></select>
+        <button class="btn primary" onclick="shareFile()">Share</button>
+        <div id="share-msg" class="notice" style="margin-left:12px"></div>
+      </div>
+
+    </div>
+  </div>
+
+<script src="/app.js"></script>
+</body>
+</html>
