@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Register · SFMS</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">Secure File Manager</div>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/login.html">Login</a>
+      <a href="/register.html">Register</a>
+      <span class="theme-toggle" onclick="toggleTheme()">🌗 Theme</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <a class="back-btn" href="/index.html">← Back</a>
+    <div class="card light" style="max-width:520px;margin:auto">
+      <h2>Create Account</h2>
+      <input id="username" type="text" placeholder="Username">
+      <input id="password" type="password" placeholder="Password">
+      <button class="btn primary" onclick="register()">Register</button>
+      <div id="reg-msg" class="notice"></div>
+    </div>
+  </div>
+
+<script src="/app.js"></script>
+</body>
+</html>
