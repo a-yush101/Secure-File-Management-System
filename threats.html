@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Threat Protection · Secure File Manager</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- MUST load Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Prevent theme flash -->
+    <script>
+        document.documentElement.className = localStorage.getItem("theme") || "dark";
+    </script>
+</head>
+
+<body>
+    <!-- TOPBAR -->
+    <div class="topbar glass">
+        <div class="brand">Secure File Manager</div>
+        <div class="nav-links">
+            <a href="/dashboard.html">Dashboard</a>
+            <a href="/threats.html">Threat Protection</a>
+            <a href="#" onclick="logout()">Logout</a>
+            <span class="theme-toggle" onclick="toggleTheme()">🌗</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <a class="back-btn" href="/dashboard.html">← Back</a>
+
+        <div class="card glass">
+            <h2>Threat Protection Overview</h2>
+            <p class="small">Summary of safe and blocked file uploads.</p>
+
+            <!-- ***** THIS MUST MATCH JS ***** -->
+            <div id="threat-summary" style="margin-top:20px;"></div>
+        </div>
+
+        <div class="card glass">
+            <h3>Upload Security Chart</h3>
+            <canvas id="threatChart" style="max-width:420px;margin:auto;"></canvas>
+        </div>
+
+        <div class="card glass">
+            <h3>Blocked Upload Events</h3>
+            <div id="blocked-events" class="small" style="margin-top:10px;"></div>
+        </div>
+    </div>
+
+<script src="/app.js"></script>
+</body>
+</html>

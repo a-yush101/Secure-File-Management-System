@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard · SFMS</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">Secure File Manager</div>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/dashboard.html">Dashboard</a>
+      <a href="/threats.html">Threat Protection</a>
+      <a href="#" onclick="logout()">Logout</a>
+      <span class="theme-toggle" onclick="toggleTheme()">🌗 Theme</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card light">
+      <h2>Your Dashboard</h2>
+      <p id="who" class="small"></p>
+
+      <h3>Upload File</h3>
+
+<div class="upload-box">
+    <label class="upload-label" for="file-input">Choose File</label>
+    <span id="file-name-display">No file selected</span>
+    <button class="btn primary" onclick="uploadFile()">Upload</button>
+</div>
+
+<input id="file-input" type="file" hidden>
+<div id="upload-msg" class="notice" style="margin-top:10px;"></div>
+
+
+      <hr>
+
+      <h3>Your Files</h3>
+      <table class="table">
+        <thead><tr><th>Name</th><th>Size</th><th>Modified</th><th>Actions</th></tr></thead>
+        <tbody id="files-body"></tbody>
+      </table>
+    </div>
+
+    <div id="admin-logs" class="card light" style="display:none">
+      <h3>Security Logs (admin)</h3>
+      <div id="logs" class="small"></div>
+    </div>
+  </div>
+
+<script src="/app.js"></script>
+</body>
+</html>
